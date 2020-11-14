@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
+
+.input-container {
+	width: 25%;
+	margin: auto;
+}
+
+.input-container form {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	margin-top: 35px;
+	box-shadow: 0 0 7px rgba(0, 0, 0, 0.3);
+	border-radius: 15px;
+	width: 420px;
+	height: 170px;
+}
+
+.input-container form input {
+	font-family: "ubuntu", sans-serif;
+	font-weight: bold;
+	width: 100%;
+	font-size: 27px;
+	padding: 12px 7px;
+	border: none;
+	outline: none;
+	border-radius: 15px;
+}
+
+.input-container form textarea {
+	font-family: "ubuntu", sans-serif;
+	width: 100%;
+	font-size: 16px;
+	padding: 12px 7px;
+	border: none;
+	outline: none;
+	resize: none;
+	border-radius: 15px;
+}
+
+.input-container form button {
+	background-color: white !important;
+	color: rgb(102, 45, 140);
+	font-size: 30px;
+	border: none;
+	outline: none;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	position: absolute;
+	right: 10px;
+	bottom: -29px;
+	box-shadow: 0 0 7px rgba(0, 0, 0, 0.3);
+}
+
+.input-container .MuiSvgIcon-root {
+	font-size: 2.5rem !important;
+}

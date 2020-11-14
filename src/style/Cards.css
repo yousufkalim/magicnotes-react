@@ -1,0 +1,50 @@
+/* 
+    Cards Style
+*/
+
+.cards-container {
+	width: 100%;
+	height: 100vh;
+	padding: 70px 50px;
+}
+
+.card {
+	width: 350px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 15px;
+	font-family: "ubuntu", sans-serif;
+	display: inline-block;
+	margin: 40px 20px;
+}
+
+.card:hover {
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+	font-size: 1.2rem;
+	font-weight: bold;
+	padding: 15px 13px;
+}
+
+.card p {
+	padding: 0 13px 15px 13px;
+}
+
+.card:hover .card-btn button {
+	visibility: visible;
+}
+
+.card-btn button {
+	visibility: hidden;
+	padding-top: 10px;
+	width: 50%;
+}
+
+.edit-btn:hover .MuiSvgIcon-root {
+	color: royalblue;
+}
+
+.del-btn:hover .MuiSvgIcon-root {
+	color: red;
+}

@@ -13,7 +13,7 @@ nav {
 }
 
 .logo {
-	flex-basis: 35%;
+	flex-basis: 33%;
 }
 .logo span {
 	font-size: 1.7rem;
@@ -42,7 +42,7 @@ nav {
 }
 
 .search {
-	flex-basis: 65%;
+	flex-basis: 67%;
 }
 
 .search input {

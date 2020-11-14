@@ -10,6 +10,7 @@ function Cards() {
 		<div className="card">
 			<h2>My good note</h2>
 			<p>Hello my name is yousuf kalim, this is a note written by me.</p>
+
 			<div className="card-btn">
 				<Button className="edit-btn">
 					<EditIcon />

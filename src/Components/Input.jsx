@@ -9,6 +9,11 @@ import Button from "@material-ui/core/Button";
 function Input() {
 	//Intializing States
 	let [note, setNote] = useState({ title: "", note: "" });
+
+	//When user click on note textarea then have to expand with title and btn
+	let [expand, setExpand] = useState(false);
+
+	//Initializing History
 	let history = useHistory();
 
 	//Handle Input
@@ -45,25 +50,30 @@ function Input() {
 		<section>
 			<div className="input-container">
 				<form onSubmit={handleSubmit}>
-					<input
-						type="text"
-						name="title"
-						placeholder="Title"
-						value={note.title}
-						onClick={handleInput}
-					/>
+					{expand ? (
+						<input
+							type="text"
+							name="title"
+							placeholder="Title"
+							value={note.title}
+							onChange={handleInput}
+						/>
+					) : null}
 					<textarea
 						cols="30"
 						rows="5"
 						name="note"
 						placeholder="Take a note..."
 						value={note.note}
-						onClick={handleInput}
+						onChange={handleInput}
+						onClick={() => setExpand(true)}
 						required
 					/>
-					<Button type="submit">
-						<AddIcon />
-					</Button>
+					{expand ? (
+						<Button type="submit">
+							<AddIcon />
+						</Button>
+					) : null}
 				</form>
 			</div>
 		</section>

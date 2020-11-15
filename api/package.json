@@ -1,0 +1,34 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "This is the api for magic-notes web app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/yousufkalim/magic-notes-react.git"
+  },
+  "keywords": [
+    "Magic",
+    "Notes",
+    "React",
+    "Node"
+  ],
+  "author": "Yousuf Kalim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yousufkalim/magic-notes-react/issues"
+  },
+  "homepage": "https://github.com/yousufkalim/magic-notes-react#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.6.1",
+    "mongoose": "^5.10.14",
+    "morgan": "^1.10.0"
+  }
+}

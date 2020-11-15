@@ -9,7 +9,6 @@ router.post("/notes", (req, res) => {
 	if (!req.body.data.note) {
 		res.status(422).json({ error: "Data Validation Failed" });
 	} else {
-		console.log(req.body);
 		const { title, note } = req.body.data;
 		notes.create(
 			{
@@ -34,7 +33,7 @@ router.get("/notes", (req, res) => {
 		if (err) {
 			res.status(500).json({ error: "Inetrnal server error" });
 		} else {
-			res.status(200).json(data);
+			res.status(200).send(data);
 		}
 	});
 });

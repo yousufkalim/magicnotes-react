@@ -39,12 +39,9 @@
 
 .create-error {
 	text-align: center;
-	color: white;
-	background-color: red;
-	border-bottom-right-radius: 12px;
-	border-bottom-left-radius: 12px;
+	color: red;
+	font-family: "ubuntu", sans-serif;
 	padding: 7px 0;
-	transition: all 0.3s ease-in-out;
 }
 
 .input-container form button {

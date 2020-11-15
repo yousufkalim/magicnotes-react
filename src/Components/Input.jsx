@@ -6,9 +6,10 @@ import axios from "axios";
 import AddIcon from "@material-ui/icons/Add";
 import Button from "@material-ui/core/Button";
 
-function Input() {
+function Input(props) {
 	//Intializing States
 	let [note, setNote] = useState({ title: "", note: "" });
+	let [error, setError] = useState("");
 
 	//When user click on note textarea then have to expand with title and btn
 	let [expand, setExpand] = useState(false);
@@ -34,14 +35,14 @@ function Input() {
 				withCredentials: true,
 				data: note,
 			})
-			.then((res) => {
+			.then(() => {
 				history.push("/");
+				setNote({ title: "", note: "" });
+				setError("");
 			})
 			.catch((err) => {
-				history.push({
-					pathname: "/",
-					state: "Note cannot be empty...",
-				});
+				console.log(err);
+				setError("Note Cannot be empty");
 			});
 	};
 
@@ -49,7 +50,10 @@ function Input() {
 	return (
 		<section>
 			<div className="input-container">
-				<form onSubmit={handleSubmit}>
+				<form
+					onSubmit={handleSubmit}
+					style={error !== "" ? { border: "2px solid red" } : null}
+				>
 					{expand ? (
 						<input
 							type="text"
@@ -67,8 +71,12 @@ function Input() {
 						value={note.note}
 						onChange={handleInput}
 						onClick={() => setExpand(true)}
-						required
 					/>
+					{error ? (
+						<span className="create-error">
+							Note Cannot be Empty
+						</span>
+					) : null}
 					{expand ? (
 						<Button type="submit">
 							<AddIcon />

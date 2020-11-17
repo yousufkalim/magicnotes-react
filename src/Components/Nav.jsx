@@ -1,6 +1,8 @@
+//init
 import React from "react";
 import { Link } from "react-router-dom";
 
+//Component
 function Nav() {
 	return (
 		<nav>
@@ -17,4 +19,5 @@ function Nav() {
 	);
 }
 
+//Export
 export default Nav;

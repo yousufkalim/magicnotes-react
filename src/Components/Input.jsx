@@ -5,6 +5,7 @@ import { handleInput, handleSubmit } from "../actions";
 import AddIcon from "@material-ui/icons/Add";
 import Button from "@material-ui/core/Button";
 
+//Component
 function Input(props) {
 	//Intializing States
 	let [note, setNote] = useState({ title: "", note: "" });
@@ -18,7 +19,15 @@ function Input(props) {
 		<section>
 			<div className="input-container">
 				<form
-					onSubmit={(e) => handleSubmit(note, setNote, setError, e)}
+					onSubmit={(e) =>
+						handleSubmit(
+							note,
+							setNote,
+							setError,
+							props.handleReload,
+							e
+						)
+					}
 					style={error !== "" ? { border: "2px solid red" } : null}
 				>
 					{expand ? (
@@ -55,4 +64,5 @@ function Input(props) {
 	);
 }
 
+//Export
 export default Input;

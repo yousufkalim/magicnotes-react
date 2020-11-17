@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 /*
@@ -19,7 +17,7 @@ function handleInput(e, setNote) {
 }
 
 //Handle Submit
-function handleSubmit(note, setNote, setError, e) {
+function handleSubmit(note, setNote, setError, handleReload, e) {
 	e.preventDefault();
 	axios
 		.post("http://localhost:5000/notes", {
@@ -27,7 +25,7 @@ function handleSubmit(note, setNote, setError, e) {
 			data: note,
 		})
 		.then(() => {
-			window.location.reload();
+			handleReload();
 			setNote({ title: "", note: "" });
 			setError("");
 		})
@@ -55,10 +53,10 @@ Delete Request
 ================
 */
 
-function handleDelete(id, deleted, setDeleted) {
+function handleDelete(id, handleReload) {
 	axios
 		.delete(`http://localhost:5000/notes/${id}`)
-		.then(() => setDeleted(deleted + 1))
+		.then(() => handleReload())
 		.catch((err) => console.log(err));
 }
 

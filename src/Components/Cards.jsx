@@ -8,18 +8,19 @@ import DeleteIcon from "@material-ui/icons/Delete";
 
 function Cards() {
 	let [card, setCard] = useState([]);
+	let [deleted, setDeleted] = useState(0);
 
 	useEffect(() => {
 		axios
 			.get("http://localhost:5000/notes")
 			.then((res) => setCard([...res.data]))
 			.catch((err) => console.log(err));
-	}, []);
+	}, [deleted]);
 
 	const handleDelete = (id) => {
 		axios
 			.delete(`http://localhost:5000/notes/${id}`)
-			.then(() => window.location.reload())
+			.then(() => setDeleted(deleted + 1))
 			.catch((err) => console.log(err));
 	};
 

@@ -36,4 +36,18 @@ function handleSubmit(note, setNote, setError, e) {
 		});
 }
 
-export { handleInput, handleSubmit };
+/*
+=================
+Fetch Request
+=================
+*/
+
+function fetch(setCard) {
+	axios
+		.get("http://localhost:5000/notes")
+		.then((res) => setCard([...res.data]))
+		.catch((err) => console.log(err));
+}
+
+//Function Export
+export { handleInput, handleSubmit, fetch };

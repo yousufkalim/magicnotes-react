@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState } from "react";
 import axios from "axios";
 
 /*
@@ -19,7 +18,7 @@ function handleInput(e, setNote) {
 }
 
 //Handle Submit
-function handleSubmit(note, setNote, setError, e) {
+function handleSubmit(note, setNote, setError, setUpdate, e) {
 	e.preventDefault();
 	axios
 		.post("http://localhost:5000/notes", {
@@ -27,7 +26,7 @@ function handleSubmit(note, setNote, setError, e) {
 			data: note,
 		})
 		.then(() => {
-			window.location.reload();
+			setUpdate((prev) => ++prev);
 			setNote({ title: "", note: "" });
 			setError("");
 		})
@@ -42,10 +41,15 @@ Fetch Request
 =================
 */
 
-function fetch(setCard) {
-	axios
+function fetch() {
+	const data = [];
+
+	return axios
 		.get("http://localhost:5000/notes")
-		.then((res) => setCard([...res.data]))
+		.then((res) => {
+			data.push(...res.data);
+			return data;
+		})
 		.catch((err) => console.log(err));
 }
 
@@ -55,10 +59,10 @@ Delete Request
 ================
 */
 
-function handleDelete(id, deleted, setDeleted) {
+function handleDelete(id, setUpdate) {
 	axios
 		.delete(`http://localhost:5000/notes/${id}`)
-		.then(() => setDeleted(deleted + 1))
+		.then(() => setUpdate((prev) => ++prev))
 		.catch((err) => console.log(err));
 }
 

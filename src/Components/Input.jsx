@@ -36,12 +36,11 @@ function Input(props) {
 				data: note,
 			})
 			.then(() => {
-				history.push("/");
+				window.location.reload();
 				setNote({ title: "", note: "" });
 				setError("");
 			})
 			.catch((err) => {
-				console.log(err);
 				setError("Note Cannot be empty");
 			});
 	};

@@ -6,16 +6,14 @@ import Button from "@material-ui/core/Button";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 
-function Cards(props) {
+function Cards() {
 	let [card, setCard] = useState([]);
 
 	useEffect(() => {
-		const fetch = async () => {
-			const res = await axios.get("http://localhost:5000/notes");
-			console.log(res.data);
-			setCard([...res.data]);
-		};
-		fetch();
+		axios
+			.get("http://localhost:5000/notes")
+			.then((res) => setCard([...res.data]))
+			.catch((err) => console.log(err));
 	}, []);
 
 	return (

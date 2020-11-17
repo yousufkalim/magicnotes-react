@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { fetch } from "../actions";
+import { fetch, handleDelete } from "../actions";
 
 //Material UI
 import Button from "@material-ui/core/Button";
@@ -14,13 +14,6 @@ function Cards() {
 	useEffect(() => {
 		fetch(setCard);
 	}, [deleted]);
-
-	const handleDelete = (id) => {
-		axios
-			.delete(`http://localhost:5000/notes/${id}`)
-			.then(() => setDeleted(deleted + 1))
-			.catch((err) => console.log(err));
-	};
 
 	return (
 		<React.Fragment>
@@ -37,7 +30,13 @@ function Cards() {
 								</Button>
 								<Button
 									className="del-btn"
-									onClick={() => handleDelete(data._id)}
+									onClick={() =>
+										handleDelete(
+											data._id,
+											deleted,
+											setDeleted
+										)
+									}
 								>
 									<DeleteIcon />
 								</Button>

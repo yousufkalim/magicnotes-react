@@ -49,5 +49,18 @@ function fetch(setCard) {
 		.catch((err) => console.log(err));
 }
 
+/*
+================
+Delete Request
+================
+*/
+
+function handleDelete(id, deleted, setDeleted) {
+	axios
+		.delete(`http://localhost:5000/notes/${id}`)
+		.then(() => setDeleted(deleted + 1))
+		.catch((err) => console.log(err));
+}
+
 //Function Export
-export { handleInput, handleSubmit, fetch };
+export { handleInput, handleSubmit, fetch, handleDelete };

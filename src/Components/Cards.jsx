@@ -16,6 +16,13 @@ function Cards() {
 			.catch((err) => console.log(err));
 	}, []);
 
+	const handleDelete = (id) => {
+		axios
+			.delete(`http://localhost:5000/notes/${id}`)
+			.then(() => window.location.reload())
+			.catch((err) => console.log(err));
+	};
+
 	return (
 		<React.Fragment>
 			{card.map((data) => {
@@ -29,7 +36,10 @@ function Cards() {
 								<Button className="edit-btn">
 									<EditIcon />
 								</Button>
-								<Button className="del-btn">
+								<Button
+									className="del-btn"
+									onClick={() => handleDelete(data._id)}
+								>
 									<DeleteIcon />
 								</Button>
 							</div>

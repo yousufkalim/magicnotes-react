@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import handleSubmit from "../actions";
 
 //Material Content
 import AddIcon from "@material-ui/icons/Add";
@@ -15,7 +16,6 @@ function Input(props) {
 	let [expand, setExpand] = useState(false);
 
 	//Initializing History
-	let history = useHistory();
 
 	//Handle Input
 	const handleInput = (e) => {
@@ -28,29 +28,13 @@ function Input(props) {
 	};
 
 	//Handle Submit
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		axios
-			.post("http://localhost:5000/notes", {
-				withCredentials: true,
-				data: note,
-			})
-			.then(() => {
-				window.location.reload();
-				setNote({ title: "", note: "" });
-				setError("");
-			})
-			.catch((err) => {
-				setError("Note Cannot be empty");
-			});
-	};
 
 	//Returning component
 	return (
 		<section>
 			<div className="input-container">
 				<form
-					onSubmit={handleSubmit}
+					onSubmit={(e) => handleSubmit(note, setNote, setError, e)}
 					style={error !== "" ? { border: "2px solid red" } : null}
 				>
 					{expand ? (

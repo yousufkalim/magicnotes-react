@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import axios from "axios";
-import handleSubmit from "../actions";
+import { handleInput, handleSubmit } from "../actions";
 
 //Material Content
 import AddIcon from "@material-ui/icons/Add";
@@ -14,20 +12,6 @@ function Input(props) {
 
 	//When user click on note textarea then have to expand with title and btn
 	let [expand, setExpand] = useState(false);
-
-	//Initializing History
-
-	//Handle Input
-	const handleInput = (e) => {
-		setNote((prev) => {
-			return {
-				...prev,
-				[e.target.name]: e.target.value,
-			};
-		});
-	};
-
-	//Handle Submit
 
 	//Returning component
 	return (
@@ -43,7 +27,7 @@ function Input(props) {
 							name="title"
 							placeholder="Title"
 							value={note.title}
-							onChange={handleInput}
+							onChange={(e) => handleInput(e, setNote)}
 						/>
 					) : null}
 					<textarea
@@ -52,7 +36,7 @@ function Input(props) {
 						name="note"
 						placeholder="Take a note..."
 						value={note.note}
-						onChange={handleInput}
+						onChange={(e) => handleInput(e, setNote)}
 						onClick={() => setExpand(true)}
 					/>
 					{error ? (

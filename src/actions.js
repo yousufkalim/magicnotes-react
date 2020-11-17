@@ -2,8 +2,23 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 
-//Post Request
+/*
+===============
+Post Request
+===============
+*/
 
+//Handel input
+function handleInput(e, setNote) {
+	setNote((prev) => {
+		return {
+			...prev,
+			[e.target.name]: e.target.value,
+		};
+	});
+}
+
+//Handle Submit
 function handleSubmit(note, setNote, setError, e) {
 	e.preventDefault();
 	axios
@@ -21,4 +36,4 @@ function handleSubmit(note, setNote, setError, e) {
 		});
 }
 
-export default handleSubmit;
+export { handleInput, handleSubmit };

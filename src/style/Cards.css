@@ -14,6 +14,7 @@
 	font-family: "ubuntu", sans-serif;
 	display: inline-block;
 	margin: 40px 20px;
+	position: relative;
 }
 
 .card:hover {
@@ -30,7 +31,8 @@
 	padding: 0 13px 15px 13px;
 }
 
-.card:hover .card-btn button {
+.card:hover .card-btn button,
+.card:hover .pinned-btn {
 	visibility: visible;
 }
 
@@ -38,6 +40,7 @@
 	visibility: hidden;
 	padding-top: 10px;
 	width: 50%;
+	transition: visibility 0.5s ease-in-out;
 }
 
 .edit-btn:hover .MuiSvgIcon-root {
@@ -46,4 +49,12 @@
 
 .del-btn:hover .MuiSvgIcon-root {
 	color: red;
+}
+
+.pinned-btn {
+	visibility: hidden;
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	cursor: pointer;
 }

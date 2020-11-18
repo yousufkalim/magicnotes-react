@@ -7,7 +7,6 @@ import Nav from "./Nav";
 import Input from "./Input";
 import Cards from "./Cards";
 import Update from "./Update";
-import Pinned from "./Pinned";
 
 //Component
 function Notes() {
@@ -89,13 +88,14 @@ function Notes() {
 					<p>PINNED</p>
 					{pinned.map((data, index) => {
 						return (
-							<Pinned
+							<Cards
 								handleReload={handleReload}
 								handleUpdateStatus={handleUpdateStatus}
 								key={index}
 								id={data._id}
 								title={data.title}
 								note={data.note}
+								pinned={data.pinned}
 							/>
 						);
 					})}
@@ -113,6 +113,7 @@ function Notes() {
 							id={data._id}
 							title={data.title}
 							note={data.note}
+							pinned={data.pinned}
 						/>
 					);
 				})}

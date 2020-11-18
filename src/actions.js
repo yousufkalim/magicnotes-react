@@ -120,6 +120,21 @@ function handleSearch(e) {
 }
 
 /*
+==================
+Handle Pinned
+==================
+*/
+
+function handlePinned(id, handleReload) {
+	axios
+		.patch(`http://localhost:5000/notes/${id}`)
+		.then(() => {
+			handleReload();
+		})
+		.catch((err) => console.log(err));
+}
+
+/*
 ====================
 Functions Export
 ====================
@@ -132,4 +147,5 @@ export {
 	fetch,
 	handleDelete,
 	handleSearch,
+	handlePinned,
 };

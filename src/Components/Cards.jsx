@@ -1,11 +1,13 @@
 //init
 import React from "react";
-import { handleDelete } from "../actions";
+import { handleDelete, handlePinned } from "../actions";
 
 //Material UI
 import Button from "@material-ui/core/Button";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
+import BookmarkBorderOutlinedIcon from "@material-ui/icons/BookmarkBorderOutlined";
+import BookmarkOutlinedIcon from "@material-ui/icons/BookmarkOutlined";
 
 //Component
 function Cards(props) {
@@ -17,6 +19,22 @@ function Cards(props) {
 					<p>{props.note}</p>
 
 					<div className="card-btn">
+						{props.pinned ? (
+							<BookmarkOutlinedIcon
+								className="pinned-btn"
+								onClick={() =>
+									handlePinned(props.id, props.handleReload)
+								}
+							/>
+						) : (
+							<BookmarkBorderOutlinedIcon
+								className="pinned-btn"
+								onClick={() =>
+									handlePinned(props.id, props.handleReload)
+								}
+							/>
+						)}
+
 						<Button
 							className="edit-btn"
 							onClick={() =>

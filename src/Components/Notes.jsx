@@ -34,13 +34,16 @@ function Notes() {
 
 	//This onClick function on edit, This function will update the update State with that note's credentials
 	const handleUpdateStatus = (id, title, note) => {
+		//This will set all card's display to inline block so then previouse actions set to default
 		let all = document.getElementsByClassName("card");
 		for (var i = 0; i < all.length; i++) {
 			all[i].style.display = "inline-block";
 		}
 
+		//This will set the display to none on that note that has to edit
 		document.getElementById(id).style.display = "none";
 
+		//Update the state with credentials
 		setUpdate((prev) => {
 			return {
 				status: prev.status + 1,

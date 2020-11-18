@@ -50,6 +50,7 @@ function handleUpdate(id, note, setError, handleReload, setUpdate, e) {
 				title: "",
 				note: "",
 			});
+			//This will set back the property display of note to inline-block
 			document.getElementById(id).style.display = "inline-block";
 		})
 		.catch(() => {

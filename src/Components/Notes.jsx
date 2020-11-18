@@ -14,15 +14,6 @@ function Notes() {
 	let [card, setCard] = useState([]); //This will get all data from db and send to card component via props
 	let [reload, setReload] = useState(0); //We are tracking this in useEffect hook so if this change the component will reload
 
-	//filter
-	let pinned = card.filter((status) => {
-		return status.pinned === true;
-	});
-
-	let others = card.filter((status) => {
-		return status.pinned === false;
-	});
-
 	//if User click on edit we will update this state with that note's credentials
 	let [update, setUpdate] = useState({
 		status: 0,
@@ -35,6 +26,15 @@ function Notes() {
 	useEffect(() => {
 		fetch(setCard);
 	}, [reload]);
+
+	//filtering pinned and other notes
+	let pinned = card.filter((status) => {
+		return status.pinned === true;
+	});
+
+	let others = card.filter((status) => {
+		return status.pinned === false;
+	});
 
 	//This function will reload the component
 	function handleReload() {
@@ -83,10 +83,29 @@ function Notes() {
 			)}
 
 			{/* Sending data that we got from database, And it will call the function after any update to reload */}
-			{pinned.length === 0 ? null : (
-				<div className="pinned">
-					<p>PINNED</p>
-					{pinned.map((data, index) => {
+
+			<div className="cards-container">
+				{pinned.length === 0 ? null : (
+					<div className="pinned-container">
+						<p className="pinned-title">PINNED</p>
+						{pinned.map((data, index) => {
+							return (
+								<Cards
+									handleReload={handleReload}
+									handleUpdateStatus={handleUpdateStatus}
+									key={index}
+									id={data._id}
+									title={data.title}
+									note={data.note}
+									pinned={data.pinned}
+								/>
+							);
+						})}
+						<p className="others-title">OTHERS</p>
+					</div>
+				)}
+				<div className="Others-container">
+					{others.map((data, index) => {
 						return (
 							<Cards
 								handleReload={handleReload}
@@ -99,24 +118,7 @@ function Notes() {
 							/>
 						);
 					})}
-					<p>OTHERS</p>
 				</div>
-			)}
-
-			<div className="cards-container">
-				{others.map((data, index) => {
-					return (
-						<Cards
-							handleReload={handleReload}
-							handleUpdateStatus={handleUpdateStatus}
-							key={index}
-							id={data._id}
-							title={data.title}
-							note={data.note}
-							pinned={data.pinned}
-						/>
-					);
-				})}
 			</div>
 		</React.Fragment>
 	);

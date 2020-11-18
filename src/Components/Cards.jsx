@@ -19,6 +19,7 @@ function Cards(props) {
 					<p>{props.note}</p>
 
 					<div className="card-btn">
+						{/* Pin Button */}
 						{props.pinned ? (
 							<BookmarkOutlinedIcon
 								className="pinned-btn"

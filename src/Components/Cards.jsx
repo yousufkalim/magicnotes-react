@@ -12,7 +12,7 @@ function Cards(props) {
 	return (
 		<React.Fragment>
 			<>
-				<div className="card">
+				<div className="card" id={props.id}>
 					<h2>{props.title}</h2>
 					<p>{props.note}</p>
 

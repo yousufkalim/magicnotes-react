@@ -34,6 +34,13 @@ function Notes() {
 
 	//This onClick function on edit, This function will update the update State with that note's credentials
 	const handleUpdateStatus = (id, title, note) => {
+		let all = document.getElementsByClassName("card");
+		for (var i = 0; i < all.length; i++) {
+			all[i].style.display = "inline-block";
+		}
+
+		document.getElementById(id).style.display = "none";
+
 		setUpdate((prev) => {
 			return {
 				status: prev.status + 1,

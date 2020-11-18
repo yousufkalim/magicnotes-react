@@ -36,7 +36,6 @@ function handleSubmit(note, setNote, setError, handleReload, e) {
 
 //Handle Update
 function handleUpdate(id, note, setError, handleReload, setUpdate, e) {
-	console.log(note);
 	e.preventDefault();
 	axios
 		.put(`http://localhost:5000/notes/${id}`, {
@@ -51,6 +50,7 @@ function handleUpdate(id, note, setError, handleReload, setUpdate, e) {
 				title: "",
 				note: "",
 			});
+			document.getElementById(id).style.display = "inline-block";
 		})
 		.catch(() => {
 			setError("Note Cannot be empty");

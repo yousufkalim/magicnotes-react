@@ -58,6 +58,24 @@ router.put("/notes/:id", (req, res) => {
 	}
 });
 
+//Patch Request
+//Patch req to update pinned status
+router.patch("/notes/:id", async (req, res) => {
+	const id = req.params.id;
+	const result = await notes.findById(id);
+	if (!result) res.status(404).json({ error: "User not found" });
+	notes.findByIdAndUpdate(
+		result.id,
+		{ pinned: result.pinned ? false : true },
+		(err, data) => {
+			if (err) res.status(500).json({ error: "Internal server error" });
+			if (data) {
+				res.status(200).send(data);
+			}
+		}
+	);
+});
+
 //Delete
 router.delete("/notes/:id", (req, res) => {
 	const id = req.params.id;

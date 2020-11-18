@@ -34,6 +34,29 @@ function handleSubmit(note, setNote, setError, handleReload, e) {
 		});
 }
 
+//Handle Update
+function handleUpdate(id, note, setError, handleReload, setUpdate, e) {
+	console.log(note);
+	e.preventDefault();
+	axios
+		.put(`http://localhost:5000/notes/${id}`, {
+			withCredentials: true,
+			data: note,
+		})
+		.then(() => {
+			handleReload();
+			setUpdate({
+				status: 0,
+				id: "",
+				title: "",
+				note: "",
+			});
+		})
+		.catch(() => {
+			setError("Note Cannot be empty");
+		});
+}
+
 /*
 =================
 Fetch Request
@@ -61,4 +84,4 @@ function handleDelete(id, handleReload) {
 }
 
 //Function Export
-export { handleInput, handleSubmit, fetch, handleDelete };
+export { handleInput, handleSubmit, handleUpdate, fetch, handleDelete };

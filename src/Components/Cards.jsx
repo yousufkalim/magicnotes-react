@@ -17,7 +17,16 @@ function Cards(props) {
 					<p>{props.note}</p>
 
 					<div className="card-btn">
-						<Button className="edit-btn">
+						<Button
+							className="edit-btn"
+							onClick={() =>
+								props.handleUpdateStatus(
+									props.id,
+									props.title,
+									props.note
+								)
+							}
+						>
 							<EditIcon />
 						</Button>
 						<Button

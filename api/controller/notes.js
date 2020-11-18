@@ -31,11 +31,31 @@ router.post("/notes", (req, res) => {
 router.get("/notes", (req, res) => {
 	notes.find((err, data) => {
 		if (err) {
-			res.status(500).json({ error: "Inetrnal server error" });
+			res.status(500).json({ error: "Internal server error" });
 		} else {
 			res.status(200).send(data);
 		}
 	});
+});
+
+//Update
+router.put("/notes/:id", (req, res) => {
+	if (!req.body.data.note) {
+		res.status(422).json({ error: "Data Validation Failed" });
+	} else {
+		let { title, note } = req.body.data;
+		notes.findOneAndUpdate(
+			{ _id: req.params.id },
+			{ title: title ? title : "Untitled", note: note },
+			(err, data) => {
+				if (err) {
+					res.status(500).json({ error: "Internal server error" });
+				} else {
+					res.status(200).send(data);
+				}
+			}
+		);
+	}
 });
 
 //Delete

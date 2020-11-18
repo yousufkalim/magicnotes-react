@@ -7,12 +7,22 @@ import Nav from "./Nav";
 import Input from "./Input";
 import Cards from "./Cards";
 import Update from "./Update";
+import Pinned from "./Pinned";
 
 //Component
 function Notes() {
 	//Initializing States
 	let [card, setCard] = useState([]); //This will get all data from db and send to card component via props
 	let [reload, setReload] = useState(0); //We are tracking this in useEffect hook so if this change the component will reload
+
+	//filter
+	let pinned = card.filter((status) => {
+		return status.pinned === true;
+	});
+
+	let others = card.filter((status) => {
+		return status.pinned === false;
+	});
 
 	//if User click on edit we will update this state with that note's credentials
 	let [update, setUpdate] = useState({
@@ -74,8 +84,27 @@ function Notes() {
 			)}
 
 			{/* Sending data that we got from database, And it will call the function after any update to reload */}
+			{pinned.length === 0 ? null : (
+				<div className="pinned">
+					<p>PINNED</p>
+					{pinned.map((data, index) => {
+						return (
+							<Pinned
+								handleReload={handleReload}
+								handleUpdateStatus={handleUpdateStatus}
+								key={index}
+								id={data._id}
+								title={data.title}
+								note={data.note}
+							/>
+						);
+					})}
+					<p>OTHERS</p>
+				</div>
+			)}
+
 			<div className="cards-container">
-				{card.map((data, index) => {
+				{others.map((data, index) => {
 					return (
 						<Cards
 							handleReload={handleReload}

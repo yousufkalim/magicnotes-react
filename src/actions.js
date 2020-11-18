@@ -83,5 +83,51 @@ function handleDelete(id, handleReload) {
 		.catch((err) => console.log(err));
 }
 
-//Function Export
-export { handleInput, handleSubmit, handleUpdate, fetch, handleDelete };
+/*
+=================
+Handle Search
+=================
+*/
+
+function handleSearch(e) {
+	//Getting Value from input element
+	let inputVal = e.target.value.toLowerCase();
+
+	//Getting all notes from page
+	let noteCard = document.getElementsByClassName("card");
+
+	//forEach function to search
+	Array.from(noteCard).forEach((element) => {
+		//Getting note title
+		let titleTxt = element
+			.getElementsByTagName("h2")[0]
+			.innerText.toLowerCase();
+
+		//Getting note
+		let noteTxt = element
+			.getElementsByTagName("p")[0]
+			.innerText.toLowerCase();
+
+		//Searching
+		if (titleTxt.includes(inputVal) || noteTxt.includes(inputVal)) {
+			element.style.display = "inline-block";
+		} else {
+			element.style.display = "none";
+		}
+	});
+}
+
+/*
+====================
+Functions Export
+====================
+*/
+
+export {
+	handleInput,
+	handleSubmit,
+	handleUpdate,
+	fetch,
+	handleDelete,
+	handleSearch,
+};

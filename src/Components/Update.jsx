@@ -26,7 +26,6 @@ function Input(props) {
 						handleUpdate(
 							props.id,
 							note,
-							setNote,
 							setError,
 							props.handleReload,
 							props.setUpdate,

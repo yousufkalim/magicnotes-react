@@ -67,7 +67,8 @@ Fetch Request
 function fetch(setCard) {
 	axios
 		.get("http://localhost:5000/notes")
-		.then((res) => setCard([...res.data]))
+		//Reversing the array to sort note by date added
+		.then((res) => setCard([...res.data.reverse()]))
 		.catch((err) => console.log(err));
 }
 

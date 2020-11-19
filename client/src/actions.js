@@ -20,7 +20,7 @@ function handleInput(e, setNote) {
 function handleSubmit(note, setNote, setError, handleReload, e) {
 	e.preventDefault();
 	axios
-		.post("http://localhost:5000/notes", {
+		.post("/notes", {
 			withCredentials: true,
 			data: note,
 		})
@@ -38,7 +38,7 @@ function handleSubmit(note, setNote, setError, handleReload, e) {
 function handleUpdate(id, note, setError, handleReload, setUpdate, e) {
 	e.preventDefault();
 	axios
-		.put(`http://localhost:5000/notes/${id}`, {
+		.put(`/notes/${id}`, {
 			withCredentials: true,
 			data: note,
 		})
@@ -66,7 +66,7 @@ Fetch Request
 
 function fetch(setCard) {
 	axios
-		.get("http://localhost:5000/notes")
+		.get("/notes")
 		//Reversing the array to sort note by date added
 		.then((res) => setCard([...res.data.reverse()]))
 		.catch((err) => console.log(err));
@@ -80,7 +80,7 @@ Delete Request
 
 function handleDelete(id, handleReload) {
 	axios
-		.delete(`http://localhost:5000/notes/${id}`)
+		.delete(`/notes/${id}`)
 		.then(() => handleReload())
 		.catch((err) => console.log(err));
 }
@@ -127,7 +127,7 @@ Handle Pinned
 
 function handlePinned(id, handleReload) {
 	axios
-		.patch(`http://localhost:5000/notes/${id}`)
+		.patch(`/notes/${id}`)
 		.then(() => {
 			handleReload();
 		})

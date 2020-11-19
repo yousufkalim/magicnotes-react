@@ -5,7 +5,7 @@ const notes = require("../model/notes");
 //Routes
 
 //CREATE
-router.post("/notes", (req, res) => {
+router.post("/", (req, res) => {
 	if (!req.body.data.note) {
 		res.status(422).json({ error: "Data Validation Failed" });
 	} else {
@@ -28,7 +28,7 @@ router.post("/notes", (req, res) => {
 });
 
 //Read
-router.get("/notes", (req, res) => {
+router.get("/", (req, res) => {
 	notes.find((err, data) => {
 		if (err) {
 			res.status(500).json({ error: "Internal server error" });
@@ -39,7 +39,7 @@ router.get("/notes", (req, res) => {
 });
 
 //Update
-router.put("/notes/:id", (req, res) => {
+router.put("/:id", (req, res) => {
 	if (!req.body.data.note) {
 		res.status(422).json({ error: "Data Validation Failed" });
 	} else {
@@ -60,7 +60,7 @@ router.put("/notes/:id", (req, res) => {
 
 //Patch Request
 //Patch req to update pinned status
-router.patch("/notes/:id", async (req, res) => {
+router.patch("/:id", async (req, res) => {
 	const id = req.params.id;
 	const result = await notes.findById(id);
 	if (!result) res.status(404).json({ error: "User not found" });
@@ -77,7 +77,7 @@ router.patch("/notes/:id", async (req, res) => {
 });
 
 //Delete
-router.delete("/notes/:id", (req, res) => {
+router.delete("/:id", (req, res) => {
 	const id = req.params.id;
 	notes.findByIdAndDelete(id, (err, data) => {
 		if (err) {

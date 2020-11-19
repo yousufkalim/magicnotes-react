@@ -13,7 +13,7 @@
 	border-radius: 15px;
 	font-family: "ubuntu", sans-serif;
 	display: inline-block;
-	margin: 40px 20px;
+	margin: 20px 20px;
 	position: relative;
 }
 
@@ -79,6 +79,9 @@ Pin Buttons
 	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 	font-size: 14px;
 	color: #5f6368;
-	margin-bottom: -20px;
 	margin-left: 30px;
+}
+
+#others-title {
+	margin-top: 20px;
 }

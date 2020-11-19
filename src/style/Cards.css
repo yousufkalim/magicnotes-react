@@ -63,8 +63,15 @@ Pin Buttons
 	visibility: hidden;
 	position: absolute;
 	top: 15px;
-	right: 15px;
+	right: 13px;
 	cursor: pointer;
+	transition: visibility 0.3s ease-in-out !important;
+}
+
+.pinned-btn:active {
+	width: 2rem;
+	height: 2rem;
+	transition: all 0.2s ease-in-out;
 }
 
 #pinned-title,

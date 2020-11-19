@@ -23,6 +23,7 @@ function Cards(props) {
 						{props.pinned ? (
 							<BookmarkOutlinedIcon
 								className="pinned-btn"
+								style={{ visibility: "visible" }}
 								onClick={() =>
 									handlePinned(props.id, props.handleReload)
 								}

@@ -1,8 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
 
 .input-container {
-	width: 25%;
-	margin: auto;
+	width: 100%;
 }
 
 .input-container form {
@@ -13,6 +12,7 @@
 	box-shadow: 0 0 7px rgba(0, 0, 0, 0.3);
 	border-radius: 15px;
 	width: 420px;
+	margin: auto;
 }
 
 .input-container form input {

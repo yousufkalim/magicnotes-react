@@ -65,3 +65,21 @@ nav {
 	background-color: white;
 	transition: all 0.3s ease-in-out;
 }
+
+/* 
+	Media Query
+*/
+
+@media only screen and (max-width: 700px) {
+	nav {
+		flex-direction: column;
+		padding: 15px 0;
+	}
+	.logo {
+		flex-basis: 100%;
+		margin-bottom: 17px;
+	}
+	.search {
+		flex-basis: 100%;
+	}
+}

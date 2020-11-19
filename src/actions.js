@@ -110,11 +110,25 @@ function handleSearch(e) {
 			.getElementsByTagName("p")[0]
 			.innerText.toLowerCase();
 
+		//Geting the titles of notes section to hide
+		const pinnedTitle = document.getElementById("pinned-title");
+		const othersTitle = document.getElementById("others-title");
+
 		//Searching
 		if (titleTxt.includes(inputVal) || noteTxt.includes(inputVal)) {
 			element.style.display = "inline-block";
+
+			if (pinnedTitle) {
+				pinnedTitle.style.display = "block";
+				othersTitle.style.display = "block";
+			}
 		} else {
 			element.style.display = "none";
+
+			if (pinnedTitle) {
+				pinnedTitle.style.display = "none";
+				othersTitle.style.display = "none";
+			}
 		}
 	});
 }

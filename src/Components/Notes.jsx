@@ -87,7 +87,7 @@ function Notes() {
 			<div className="cards-container">
 				{pinned.length === 0 ? null : (
 					<div className="pinned-container">
-						<p className="pinned-title">PINNED</p>
+						<p id="pinned-title">PINNED</p>
 						{pinned.map((data, index) => {
 							return (
 								<Cards
@@ -101,7 +101,7 @@ function Notes() {
 								/>
 							);
 						})}
-						<p className="others-title">OTHERS</p>
+						<p id="others-title">OTHERS</p>
 					</div>
 				)}
 				<div className="Others-container">

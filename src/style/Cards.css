@@ -67,8 +67,8 @@ Pin Buttons
 	cursor: pointer;
 }
 
-.pinned-title,
-.others-title {
+#pinned-title,
+#others-title {
 	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 	font-size: 14px;
 	color: #5f6368;

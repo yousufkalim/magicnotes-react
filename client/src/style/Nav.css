@@ -56,12 +56,12 @@ nav {
 	border-radius: 7px;
 	padding: 8px;
 	outline: none;
-	opacity: 80%;
+	opacity: 80% !important;
 	transition: all 0.3s ease-in-out;
 }
 
 .search input:focus {
-	opacity: 100%;
+	opacity: 100% !important;
 	background-color: rgba(255, 255, 255, 1);
 	transition: all 0.3s ease-in-out;
 }

@@ -13,12 +13,7 @@ function Nav() {
 				</Link>
 			</div>
 			<div className="search">
-				<input
-					type="text"
-					id="search"
-					placeholder="Search"
-					onChange={handleSearch}
-				/>
+				<input type="text" id="search" onChange={handleSearch} />
 				{/* <Link to="/logout">Logout</Link> */}
 			</div>
 		</nav>

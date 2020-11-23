@@ -46,7 +46,7 @@ nav {
 }
 
 .search input {
-	background-color: rgba(255, 255, 255, 0.2);
+	background-color: rgba(255, 255, 255, 0.1);
 	font-size: 20px;
 	font-family: "ubuntu", sans-serif;
 	height: 35px;
@@ -56,13 +56,11 @@ nav {
 	border-radius: 7px;
 	padding: 8px;
 	outline: none;
-	opacity: 80% !important;
 	transition: all 0.3s ease-in-out;
 }
 
 .search input:focus {
-	opacity: 100% !important;
-	background-color: rgba(255, 255, 255, 1);
+	background-color: white;
 	transition: all 0.3s ease-in-out;
 }
 

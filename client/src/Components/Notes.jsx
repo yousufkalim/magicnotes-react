@@ -25,6 +25,7 @@ function Notes() {
 	//useEffect hook to fetch data from API via actions.js
 	useEffect(() => {
 		fetch(setCard);
+		setInterval(fetch(setCard), 1680000);
 	}, [reload]);
 
 	//filtering pinned and other notes
